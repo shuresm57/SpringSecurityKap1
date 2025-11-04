@@ -50,7 +50,7 @@ public class BankAuthenticationProvider implements AuthenticationProvider {
                 String roleString = customer.get().getRole(); // e.g. "ROLE_USER,ROLE_ADMIN"
                 List<String> roles = Arrays.asList(roleString.split(","));
                 for (String role : roles) {
-                    authorities.add(new SimpleGrantedAuthority(role.trim()));
+                    authorities.add(new SimpleGrantedAuthority("ROLE_" +role.trim()));
                 }
                 return new UsernamePasswordAuthenticationToken(username, pwd, authorities);
             } else {
